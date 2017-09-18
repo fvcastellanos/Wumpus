@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wumpus", "Wumpus\Wumpus.csproj", "{111FE54C-0568-45F1-AA4E-ECB373B9CF60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WumpusLogic", "WumpusLogic\WumpusLogic.csproj", "{BF86E6F8-7357-40ED-A707-E44651CFA021}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{111FE54C-0568-45F1-AA4E-ECB373B9CF60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{111FE54C-0568-45F1-AA4E-ECB373B9CF60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{111FE54C-0568-45F1-AA4E-ECB373B9CF60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{111FE54C-0568-45F1-AA4E-ECB373B9CF60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF86E6F8-7357-40ED-A707-E44651CFA021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF86E6F8-7357-40ED-A707-E44651CFA021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF86E6F8-7357-40ED-A707-E44651CFA021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF86E6F8-7357-40ED-A707-E44651CFA021}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F673AF84-7CC8-43B2-B201-4F884BD2872C}
+	EndGlobalSection
+EndGlobal
