@@ -40,9 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Container.cs" />
+    <Compile Include="Domain\Gold.cs" />
     <Compile Include="Domain\Item.cs" />
     <Compile Include="Domain\Cave.cs" />
+    <Compile Include="Domain\Pit.cs" />
+    <Compile Include="Domain\Wumpus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Game\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
