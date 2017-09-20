@@ -46,10 +46,9 @@
     <Compile Include="Domain\Cave.cs" />
     <Compile Include="Domain\Pit.cs" />
     <Compile Include="Domain\Wumpus.cs" />
+    <Compile Include="Game\WumpusService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Game\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

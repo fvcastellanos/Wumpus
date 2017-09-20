@@ -12,7 +12,13 @@ namespace WumpusLogic.Domain
         public Cave EastCave { get; set; }
         public Cave WestCave { get; set; }
 
-        public Cave(string name, Cave northCave, Cave southCave, Cave eastCave, Cave westCave)
+        public Cave(string name)
+        {
+            Name = name;
+            Attributes = new List<string>();
+        }
+
+/*        public Cave(string name, Cave northCave, Cave southCave, Cave eastCave, Cave westCave)
         {
             Name = name;
             NorthCave = northCave;
@@ -21,6 +27,7 @@ namespace WumpusLogic.Domain
             WestCave = westCave;
             Attributes = new List<string>();
         }
+        */
 
         public void SetCaveItem(Item item)
         {
