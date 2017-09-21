@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using WumpusLogic.Domain;
 
 namespace WumpusLogic.Game
@@ -70,7 +69,7 @@ namespace WumpusLogic.Game
             var cave = container.Cave;
             var item = cave.CaveItem;
 
-            return new CaveInfo(cave.Name, cave.Attributes, item?.CanKill ?? false, item?.Winner ?? false);
+            return new CaveInfo(cave.Name, cave.Attributes, item?.CanKill ?? false, item?.Winner ?? false, item?.Die() ?? "", item?.Win() ?? "");
         }
 
         public bool DeadInside(int x, int y)

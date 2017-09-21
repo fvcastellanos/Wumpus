@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\AgentInfo.cs" />
     <Compile Include="Domain\CaveInfo.cs" />
     <Compile Include="Domain\Container.cs" />
     <Compile Include="Domain\Gold.cs" />
@@ -47,7 +48,9 @@
     <Compile Include="Domain\Cave.cs" />
     <Compile Include="Domain\Pit.cs" />
     <Compile Include="Domain\Wumpus.cs" />
+    <Compile Include="Game\AgentService.cs" />
     <Compile Include="Game\BoardService.cs" />
+    <Compile Include="Game\GameService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
