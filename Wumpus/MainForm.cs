@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using WumpusLogic.Domain;
 using WumpusLogic.Game;
@@ -15,15 +14,21 @@ namespace Wumpus
         private readonly string _playerOne;
         private readonly string _playerTwo;
         private int _currentTurn;
-        private IDictionary<string, PictureBox> _pictureBoxes;
+        private readonly IDictionary<string, PictureBox> _pictureBoxes;
+        private IDictionary<string, AgentInfo> _currentInfo;
+
+        private string _lastAgent;
+        private string _lastCave;
 
         public MainForm()
         {
             InitializeComponent();
             _playerOne = "Indiana Jones";
-            _playerTwo = "Drake";
+            _playerTwo = "Lara Croft";
             _agents = new List<string>() { _playerOne, _playerTwo };
             _pictureBoxes = new Dictionary<string, PictureBox>();
+            _currentInfo = new Dictionary<string, AgentInfo>();
+
         }
 
         private string _getNextTurn()
@@ -52,25 +57,52 @@ namespace Wumpus
             _currentTurn = 0;
         }
 
+        private void _moveToInitialPosition()
+        {
+            _currentInfo[_playerOne] = _gameService.MoveToInitialCave(_playerOne);
+            _displayActiveCave(_playerOne, _currentInfo[_playerOne].CaveName);
+
+            _currentInfo[_playerTwo] = _gameService.MoveToInitialCave(_playerTwo);
+            _displayActiveCave(_playerTwo, _currentInfo[_playerTwo].CaveName);
+        }
+
+        private void _displayActiveCave(string name, string caveName)
+        {
+            var color = _playerOne.Equals(name) ? Color.Bisque : Color.BlueViolet;
+            _pictureBoxes[caveName].BackColor = color ;
+        }
+
+        private void _clearLastPictureBox(string name)
+        {
+            var info = _playerOne.Equals(name) ? _currentInfo[_playerOne] : _currentInfo[_playerTwo];
+            _pictureBoxes[info.CaveName].BackColor = TransparencyKey;
+        }
+
         private void _moveAndEvaluate()
         {
             var agent = _getNextTurn();
+            _clearLastPictureBox(agent);
             var agentInfo = _gameService.MoveAgent(agent);
+            _currentInfo[agent] = agentInfo;
+            _displayActiveCave(agent, agentInfo.CaveName);
             _evaluate(agent, agentInfo);
         }
 
         private void _evaluate(string name, AgentInfo info)
         {
             var log = _gameService.GetAgentLog(name);
-            _pictureBoxes[info.CaveName].BackColor = Color.Bisque;;
             _displayAgentLog(name, log);
+
+            if (!info.IsAlive)
+            {
+                _gameService.Respawn(name);
+            }
 
             if (info.HasWon)
             {
                 _stopGame();
                 MessageBox.Show("Player: " + name + " is the winner!");
             }
-//            _displayAgentLog(name, new List<string>() { info.ToString() });
         }
 
         private void _displayAgentLog(string name, IEnumerable<string> entries)
@@ -116,6 +148,8 @@ namespace Wumpus
         private void btnInit_Click(object sender, EventArgs e)
         {
             _initGame();
+            _fillImageTable();
+            _moveToInitialPosition();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -125,14 +159,13 @@ namespace Wumpus
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            _fillImageTable();
+            _moveAndEvaluate();
             tmTurns.Start();   
         }
 
         private void btnNextMove_Click(object sender, EventArgs e)
         {
             _moveAndEvaluate();
-
         }
 
         private void tmTurns_Tick(object sender, EventArgs e)

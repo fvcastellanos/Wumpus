@@ -56,7 +56,6 @@ namespace WumpusLogic.Game
             if (_whereIDied.Contains(info.Name))
             {
                 _info("According with my past life this cave has dead inside, so, I won't go there\n");
-                MoveToInitialCave();
                 return GetAgentInfo();
             }
 

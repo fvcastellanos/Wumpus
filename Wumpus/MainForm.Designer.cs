@@ -42,16 +42,13 @@
             this.tmTurns = new System.Windows.Forms.Timer(this.components);
             this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.imageTable = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.gbPlayerII.SuspendLayout();
             this.gbPlayerI.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnNextMove);
             this.panel1.Controls.Add(this.btnStop);
             this.panel1.Controls.Add(this.btnStart);
@@ -66,7 +63,7 @@
             // 
             // btnNextMove
             // 
-            this.btnNextMove.Location = new System.Drawing.Point(817, 99);
+            this.btnNextMove.Location = new System.Drawing.Point(610, 99);
             this.btnNextMove.Name = "btnNextMove";
             this.btnNextMove.Size = new System.Drawing.Size(106, 23);
             this.btnNextMove.TabIndex = 5;
@@ -76,7 +73,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(817, 70);
+            this.btnStop.Location = new System.Drawing.Point(610, 70);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(106, 23);
             this.btnStop.TabIndex = 4;
@@ -86,7 +83,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(817, 41);
+            this.btnStart.Location = new System.Drawing.Point(610, 41);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(106, 23);
             this.btnStart.TabIndex = 3;
@@ -138,7 +135,7 @@
             // 
             // btnInit
             // 
-            this.btnInit.Location = new System.Drawing.Point(817, 12);
+            this.btnInit.Location = new System.Drawing.Point(610, 12);
             this.btnInit.Name = "btnInit";
             this.btnInit.Size = new System.Drawing.Size(106, 23);
             this.btnInit.TabIndex = 0;
@@ -182,16 +179,6 @@
             this.imageTable.Size = new System.Drawing.Size(952, 406);
             this.imageTable.TabIndex = 1;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(677, 129);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,7 +193,6 @@
             this.gbPlayerII.PerformLayout();
             this.gbPlayerI.ResumeLayout(false);
             this.gbPlayerI.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -225,7 +211,6 @@
         private System.Windows.Forms.Button btnNextMove;
         private System.Windows.Forms.ImageList imgList;
         private System.Windows.Forms.TableLayoutPanel imageTable;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

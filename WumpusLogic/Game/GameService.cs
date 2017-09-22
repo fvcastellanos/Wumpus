@@ -34,6 +34,17 @@ namespace WumpusLogic.Game
             }
         }
 
+        public AgentInfo MoveToInitialCave(string name)
+        {
+            _agents[name].MoveToInitialCave();
+            return _agents[name].GetAgentInfo();
+        }
+
+        public AgentInfo Respawn(string name)
+        {
+            return _agents[name].Respawn();
+        }
+
         public void Reset()
         {
             _boardService.ResetBoard();
