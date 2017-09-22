@@ -4,7 +4,7 @@ namespace WumpusLogic.Domain
 {
     public class Cave
     {
-        public string Name { get; set; }
+        public string Name { get; }
         public Item CaveItem { get; set; }
         public IList<string> Attributes { get; set; }
         public Cave NorthCave { get; set; }
@@ -51,6 +51,16 @@ namespace WumpusLogic.Domain
             {
                 cave.Attributes.Add(attribute);
             }
+        }
+
+        public bool Equals(Cave other)
+        {
+            return string.Equals(Name, other.Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Name != null ? Name.GetHashCode() : 0);
         }
     }
 }

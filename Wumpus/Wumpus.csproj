@@ -64,6 +64,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -80,6 +81,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\cave.png" />
+    <None Include="Assets\Images\wumpus.png" />
+    <None Include="Assets\Images\pit.jpg" />
+    <None Include="Assets\Images\gold.png" />
+    <None Include="Resources\pit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WumpusLogic\WumpusLogic.csproj">
+      <Project>{bf86e6f8-7357-40ed-a707-e44651cfa021}</Project>
+      <Name>WumpusLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,7 +23,7 @@ namespace WumpusLogic.Domain
 
         public override string ToString()
         {
-            return "Cave: " + Name + "\n" + _attributesToString();
+            return Name + "\n" + _attributesToString();
         }
 
         private string _attributesToString()

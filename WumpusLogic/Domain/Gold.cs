@@ -15,17 +15,17 @@ namespace WumpusLogic.Domain
 
         public override string Die()
         {
-            return "Gold can't die";
+            return "Gold can't die\n";
         }
 
         public override string Kill()
         {
-            return "Gold can't kill you";
+            return "Gold can't kill you\n";
         }
 
         public override string Win()
         {
-            return "You found the gold, you have win!";
+            return "You found the gold, you have win!\n";
         }
     }
 }

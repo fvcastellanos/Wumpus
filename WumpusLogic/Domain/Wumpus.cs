@@ -15,17 +15,17 @@ namespace WumpusLogic.Domain
 
         public override string Die()
         {
-            return "A terrible roaring was heard in all the caves";
+            return "A terrible roaring was heard in all the caves\n";
         }
 
         public override string Kill()
         {
-            return "You are the Wumpus dinner";
+            return "You are the Wumpus dinner\n";
         }
 
         public override string Win()
         {
-            return "You can't win with the Wumpus";
+            return "You can't win with the Wumpus\n";
         }
     }
 }

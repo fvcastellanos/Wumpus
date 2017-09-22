@@ -47,6 +47,7 @@
     <Compile Include="Domain\Item.cs" />
     <Compile Include="Domain\Cave.cs" />
     <Compile Include="Domain\Pit.cs" />
+    <Compile Include="Domain\Position.cs" />
     <Compile Include="Domain\Wumpus.cs" />
     <Compile Include="Game\AgentService.cs" />
     <Compile Include="Game\BoardService.cs" />

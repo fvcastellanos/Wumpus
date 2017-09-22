@@ -15,17 +15,17 @@ namespace WumpusLogic.Domain
 
         public override string Die()
         {
-            return "A pit can't die";
+            return "A pit can't die\n";
         }
 
         public override string Kill()
         {
-            return "Keep falling until the end of times";
+            return "Keep falling until the end of times\n";
         }
 
         public override string Win()
         {
-            return "You can't win while falling forever";
+            return "You can't win while falling forever\n";
         }
     }
 }

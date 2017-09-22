@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using WumpusLogic.Domain;
 
@@ -16,7 +16,8 @@ namespace WumpusLogic.Game
         private int _respawns;
         private bool _isAlive;
         private bool _hasWon;
-        private IList<string> _whereIDied;
+        private Cave _currentCave;
+        private readonly IList<string> _whereIDied;
 
         public AgentService(string name, BoardService boardService, IList<string> log, int startX, int startY)
         {
@@ -29,32 +30,39 @@ namespace WumpusLogic.Game
             _respawns = 0;
             _isAlive = true;
             _hasWon = false;
+            _currentCave = null;
             _whereIDied = new List<string>();
         }
 
-        public AgentInfo MoveToInitialCave()
+        public Cave MoveToInitialCave()
         {
-            return Move(_startX, _startY);
+            _currentCave = _boardService.GetCave(_startX, _startY).Cave;
+            return _currentCave;
         }
 
-        public AgentInfo Move(int x, int y)
+        public AgentInfo Move(Position position)
         {
-            if (!_boardService.CaveExists(x, y))
+            var cave = _movePosition(position);
+
+            if (_currentCave.Equals(cave))
             {
-                _info("I can't move there");
+                _info("I can't move there\n");
                 return GetAgentInfo();
             }
 
-            var info = _boardService.GetCaveInfo(x, y);
+            var info = _boardService.GetCaveInfo(cave);
+            _info(info.ToString());
 
             if (_whereIDied.Contains(info.Name))
             {
-                _info("According with my past life this cave has dead inside, so, I won't go there");
+                _info("According with my past life this cave has dead inside, so, I won't go there\n");
+                MoveToInitialCave();
                 return GetAgentInfo();
             }
 
             _analyzeCave(info);
             _showFindings(info);
+            _currentCave = cave;
 
             return GetAgentInfo();
         }
@@ -68,8 +76,9 @@ namespace WumpusLogic.Game
         {
             _respawns++;
             _isAlive = true;
-            _info("Using a phoenix down in me! -> I'm back!!");
-            return MoveToInitialCave();
+            _info("Using a phoenix down in me! -> I'm back!!\n");
+            MoveToInitialCave();
+            return GetAgentInfo();
         }
 
         private void _info(string message)
@@ -100,5 +109,43 @@ namespace WumpusLogic.Game
             }
             
         }
+
+        private Cave _movePosition(Position position)
+        {
+            switch (position)
+            {
+                case Position.North:
+                    return _moveNorth(_currentCave);
+                case Position.South:
+                    return _moveSouth(_currentCave);
+                case Position.East:
+                    return _moveEast(_currentCave);
+                case Position.West:
+                    return _moveWest(_currentCave);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(position), position, null);
+            }
+        }
+
+        private Cave _moveNorth(Cave cave)
+        {
+            return cave.NorthCave ?? cave;
+        }
+
+        private Cave _moveSouth(Cave cave)
+        {
+            return cave.SouthCave ?? cave;
+        }
+
+        private Cave _moveEast(Cave cave)
+        {
+            return cave.EastCave ?? cave;
+        }
+
+        private Cave _moveWest(Cave cave)
+        {
+            return cave.WestCave ?? cave;
+        }
+
     }
 }

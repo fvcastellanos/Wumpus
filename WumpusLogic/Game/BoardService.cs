@@ -9,7 +9,7 @@ namespace WumpusLogic.Game
     {
         private readonly int _rows;
         private readonly int _cols;
-        private readonly Container[ , ] _board;
+        private Container[,] _board;
 
         public BoardService(int x, int y)
         {
@@ -24,9 +24,16 @@ namespace WumpusLogic.Game
             _interconnectCaves();
         }
 
+        public Container[,] GetContainers()
+        {
+            return _board;
+        }
+
         public void AddItems(IEnumerable<Item> items)
         {
             var rnd = new Random();
+            var max = 10;
+            var it = 0;
             foreach (var item in items)
             {
                 var success = false;
@@ -36,8 +43,13 @@ namespace WumpusLogic.Game
 
                 while (!success)
                 {
-                    if (thingItem != null) continue;
-                    thingItem = item;
+                    if (it == max) break;
+                    if (thingItem != null)
+                    {
+                        it++;
+                        continue;
+                    }
+                    _board[x, y].Cave.CaveItem = item;
                     success = true;
                 }
             }
@@ -63,13 +75,16 @@ namespace WumpusLogic.Game
             }
         }
 
-        public CaveInfo GetCaveInfo(int x, int y)
+        public Container GetCave(int x, int y)
         {
-            var container = _board[x, y];
-            var cave = container.Cave;
+            return CaveExists(x, y) ? _board[x, y] : null;
+        }
+
+        public CaveInfo GetCaveInfo(Cave cave)
+        {
             var item = cave.CaveItem;
 
-            return new CaveInfo(cave.Name, cave.Attributes, item?.CanKill ?? false, item?.Winner ?? false, item?.Die() ?? "", item?.Win() ?? "");
+            return new CaveInfo(cave.Name, cave.Attributes, item?.CanKill ?? false, item?.Winner ?? false, item?.Kill() ?? "", item?.Win() ?? "");
         }
 
         public bool DeadInside(int x, int y)
@@ -91,6 +106,11 @@ namespace WumpusLogic.Game
                 return false;
 
             return true;
+        }
+
+        public void ResetBoard()
+        {
+            _board = new Container[_rows, _cols];
         }
 
         private void _fillBoardWithCaves()
