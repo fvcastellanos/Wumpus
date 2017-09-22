@@ -69,7 +69,7 @@ namespace WumpusLogic.Game
 
         public AgentInfo GetAgentInfo()
         {
-            return new AgentInfo(_name, _deaths, _respawns, _isAlive, _hasWon);
+            return new AgentInfo(_name, _deaths, _respawns, _isAlive, _hasWon, _currentCave.Name);
         }
 
         public AgentInfo Respawn()

@@ -15,6 +15,7 @@ namespace Wumpus
         private readonly string _playerOne;
         private readonly string _playerTwo;
         private int _currentTurn;
+        private IDictionary<string, PictureBox> _pictureBoxes;
 
         public MainForm()
         {
@@ -22,6 +23,7 @@ namespace Wumpus
             _playerOne = "Indiana Jones";
             _playerTwo = "Drake";
             _agents = new List<string>() { _playerOne, _playerTwo };
+            _pictureBoxes = new Dictionary<string, PictureBox>();
         }
 
         private string _getNextTurn()
@@ -60,6 +62,7 @@ namespace Wumpus
         private void _evaluate(string name, AgentInfo info)
         {
             var log = _gameService.GetAgentLog(name);
+            _pictureBoxes[info.CaveName].BackColor = Color.Bisque;;
             _displayAgentLog(name, log);
 
             if (info.HasWon)
@@ -72,8 +75,7 @@ namespace Wumpus
 
         private void _displayAgentLog(string name, IEnumerable<string> entries)
         {
-            TextBox log = null;
-            log = name.Equals(_playerOne) ? playerOneLog : playerTwoLog;
+            var log = name.Equals(_playerOne) ? playerOneLog : playerTwoLog;
 
             log.Clear();
 
@@ -106,6 +108,7 @@ namespace Wumpus
                 var item = board[x, y].Cave.CaveItem;
                 image.Image = _getImageResource(item);
                 image.Name = board[x, y].Cave.Name;
+                _pictureBoxes[image.Name] = image;
                 imageTable.Controls.Add(image);
             }
         }
@@ -123,12 +126,18 @@ namespace Wumpus
         private void btnStart_Click(object sender, EventArgs e)
         {
             _fillImageTable();
+            tmTurns.Start();   
         }
 
         private void btnNextMove_Click(object sender, EventArgs e)
         {
             _moveAndEvaluate();
 
+        }
+
+        private void tmTurns_Tick(object sender, EventArgs e)
+        {
+            _moveAndEvaluate();
         }
     }
 }

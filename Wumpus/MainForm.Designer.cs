@@ -149,15 +149,16 @@
             // tmTurns
             // 
             this.tmTurns.Interval = 5000;
+            this.tmTurns.Tick += new System.EventHandler(this.tmTurns_Tick);
             // 
             // imgList
             // 
             this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
             this.imgList.TransparentColor = System.Drawing.Color.Transparent;
             this.imgList.Images.SetKeyName(0, "cave.png");
-            this.imgList.Images.SetKeyName(1, "pit.jpg");
-            this.imgList.Images.SetKeyName(2, "gold.png");
-            this.imgList.Images.SetKeyName(3, "wumpus.png");
+            this.imgList.Images.SetKeyName(1, "gold.png");
+            this.imgList.Images.SetKeyName(2, "wumpus.png");
+            this.imgList.Images.SetKeyName(3, "pit.png");
             // 
             // imageTable
             // 
@@ -183,7 +184,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Wumpus.Properties.Resources.cave;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(677, 129);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);

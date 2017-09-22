@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\cave.png" />
+    <None Include="Assets\Images\pit.png" />
+    <None Include="Resources\pit.png" />
     <None Include="Assets\Images\wumpus.png" />
     <None Include="Assets\Images\pit.jpg" />
     <None Include="Assets\Images\gold.png" />
