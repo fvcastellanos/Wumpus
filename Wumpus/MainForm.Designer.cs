@@ -187,7 +187,7 @@
             this.Controls.Add(this.imageTable);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
-            this.Text = "Main Form";
+            this.Text = "Hunt the Wumpus";
             this.panel1.ResumeLayout(false);
             this.gbPlayerII.ResumeLayout(false);
             this.gbPlayerII.PerformLayout();
